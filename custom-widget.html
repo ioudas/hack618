@@ -193,101 +193,39 @@
             </div>
         </div>
     </div>
-
+<p>Jsme připraveni poradit vám on-line každý den od 8 do 22 hodin.</p>
+	        <p><a class="button blue chat-start" type="submit">Otevřít chat</a></p>
+	    </div></div>
 
     <script type="text/javascript">
         (function () {
-        var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
-        scr.src = '//appdev.mluvii.com/widget/OOWidget.js';
-        scr.$owidgetOnLoad = function (owidget) {
-            if (!owidget.isSupported) { return; }
-            owidget.init('295b1064-cf5b-4a5d-9e05-e7a74f86ae5e', 'petr');
-
-            let widgetOnline = true;
-
-            owidget.setStatusUpdateCallback(function(code) {
-                const statusIndicatorImage = document.getElementsByClassName('StatusIndicatorCore-imageSelf')[0];
-                const statusIndicatorText = document.getElementsByClassName('StatusIndicatorCore-textSelf')[0];
-
-                switch(code) {
-                    case 0:
-                        statusIndicatorImage.src = 'Images/ikonka_konverzace-01_offline.png';
-                        statusIndicatorText.innerText = 'Jsme offline';
-                        statusIndicatorText.style.color = '#bf464f';
-                        widgetOnline = false; 
-                        break;
-                    case 1:
-                        statusIndicatorImage.src = 'Images/ikonka_konverzace-01_online.png';
-                        statusIndicatorText.innerText = 'Jsme online';
-                        statusIndicatorText.style.color = '#8dc63f';
-                        widgetOnline = true;
-                        break;
-                    case 2:
-                        statusIndicatorImage.src = 'Images/ikonka_konverzace-01_busy.png';
-                        statusIndicatorText.innerText = 'Máme toho hodně';
-                        statusIndicatorText.style.color = '#ffbb06';                                           
-                        widgetOnline = true;                        
-                        break;
-                }
-            });
-
-
-            const widgetButton = document.getElementsByClassName('WidgetInput-button')[0];
-            const widgetInput = document.getElementsByClassName('WidgetInput-input')[0];
-            const hints = document.getElementsByClassName('Hints')[0];
-
-            const nameInput = document.getElementById('inputName');
-            const idInput = document.getElementById('inputId');
-
-            const regEmpty = new RegExp('^$');
-            const regNumberLength6 = new RegExp('^\\d{6}$');
-            const regNumberLength9 = new RegExp('^\\d{9}$');
-
-            widgetButton.addEventListener('click', function(e) {
-                if(!widgetOnline) return;
-
-                // const customData = {};
-                if(nameInput.value !== '') {
-                    owidget.addCustomData('navod_clientName', nameInput.value);
-                    // customData.navod_clientName = nameInput.value;
-                }
-                if(idInput.value !== '') {
-                    owidget.addCustomData('navod_clientId', idInput.value);
-                    // customData.navod_clientId = idInput.value;                    
-                }
-                // owidget.setCustomData(customData);
-
-                if(regEmpty.test(widgetInput.value)) {
-					owidget.openChat();
-				}
-                if(!regNumberLength6.test(widgetInput.value) || !regNumberLength9.test(widgetInput.value)) {
-                    hints.classList.remove('isHidden');
-                }
-                if(regNumberLength6.test(widgetInput.value)) {
-                    owidget.openApp('callshow', widgetInput.value)
-                    // const openedCS = owidget.openApp('callshow', widgetInput.value); 
-                    // console.log(openedCS);
-                    // if(!openedCS) return;
-                }
-                if(regNumberLength9.test(widgetInput.value)) {
-                    owidget.numberNormalization(widgetInput.value)
-                    const normalizedNumber = owidget.numberNormalization(widgetInput.value);
-                    owidget.openApp('callback', normalizedNumber);
-                    // const openedCB = owidget.openApp('callback', normalizedNumber); 
-                    // if(!openedCB) return;
-                }
-            });
-
-            widgetInput.addEventListener('input', function() {
-                if(regNumberLength6.test(widgetInput.value) || regNumberLength9.test(widgetInput.value)) {
-                    hints.classList.add('isHidden');
-                }
-            });
-
-            owidget.connectToServer();
-        };
-        var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
-        })();
+	var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+	scr.src = '//appdev.mluvii.com/widget/OOWidget.js';
+	scr.$owidgetOnLoad = function (owidget) {
+		if (!owidget.isSupported) { return; }
+		owidget.init(
+			'295b1064-cf5b-4a5d-9e05-e7a74f86ae5e',
+				'petr'
+		);
+		var custObj = {};
+		custObj.AktualniURL = 'https://www.o2.cz/osobni/chat/?_ir=chat';
+		custObj.Titulek = 'Chat s on-line konzultantem',
+		custObj.temaChatu = 'výchozí konfigurace';
+		custObj.TypZarizeni = 'big screen';
+		
+		
+		 
+		owidget.setCustomData(custObj);
+		owidget.setProtectedData('MIAGCSqGSIb3DQEHA6CAMIACAQAxggFWMIIBUgIBADA6MC4xLDAqBgNVBAMMI01MVVZJSSBDRFAgdmlydHVhbG5pLXByb2Rlam5hLm8yLmN6AghGtSQU6T7OHzANBgkqhkiG9w0BAQEFAASCAQABqq7q9L2vEswrFWmPrY6uFD4ToI/4ceh3w+hdJKyNXkXNRBnrU3mVjY8vmyk30Rlx4T19Mn1wOqO7pSMPKMYo58w22Q7VbBjApZfUN1e7BRkXbfNzt8qmd//p1RSvamNkoqk440mMKkCu7hz75/HnGztxjibmmAIaPiSocxF7NVvxP4C33xL+QfMCvN77YeELCfRob/m9Tw8leoBgN96C5FcJlLhpOeT57nde0UYEyBWsBWL0vwFw2vCXifhRXVdhQeuHly5ho+98Z4myfQjmvp3GZ6TlcpWL3N3U19h0ykOaqoeWIQm2jxbXoSCEkRflXNiAm35Tcyd1cmpn8GP3MIAGCSqGSIb3DQEHATAdBglghkgBZQMEAQIEECO/2aD3iaqA91Hfwk8FR4WggASB4OgdiYB3UbnPDSmkv1OywBVrEue2P4lWpS/lqWMsoOmkLT9siIlxUyY9tfsBf/O6eNPafd77IukrzeZ3Ck/rTu5cSk5CuCmHAu9839jSyTtvnoTqJwcVXbUNUdqK4HDJJZ75c2i5GEEDy6HFlMnxQ0zWetfZOxRTmwoNMYFWLh4ex2L3HRsIoKQPSUGPoVdbQSO6zxiFT8aRJUrentnlW2vPB4lXN79Cf7SrBSiHKPazd0g5nl4FJ88mbC/q6KEbRoFrhdyIMx3jhadyUCsVgbnXWoj7BSt9oSF7Nc1OlLw/AAAAAAAAAAAAAA==');
+		$(document).on('click', '.chat-start,.cz .rn-chat-toggle', function(e) { e.preventDefault(); owidget.openChat(); }); 
+		owidget.connectToServer();
+		owidget.addCustomData('skupinaOPE', 'chatRESecare');
+			O2.ChatWidget.owidget = owidget;
+			O2.ChatWidget.statusUpdate(owidget.getOperatorStatus());
+			owidget.setStatusUpdateCallback($.proxy(O2.ChatWidget.statusUpdate, O2.ChatWidget));
+	};
+	var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+})();
     </script>
 
 </body></html>
